@@ -19,9 +19,9 @@
          $dbpass = '';
          $db = 'heartberry';
          $conn = mysqli_connect($dbhost, $dbuser, $dbpass,$db);
+         $id = $_GET['id_elderly'];
 
-
-         $sql="SELECT *,TIME(date)as waktu FROM elderly e join heartbeat h on e.id_elderly=h.id_elderly where DATE(date)=DATE(NOW()) and e.id_elderly=10 ORDER by date";
+         $sql="SELECT *,TIME(date)as waktu FROM elderly e join heartbeat h on e.id_elderly=h.id_elderly where DATE(date)=DATE(NOW()) and e.id_elderly=".$id." ORDER by date";
         
         $result=mysqli_query($conn,$sql);
 

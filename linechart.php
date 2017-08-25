@@ -5,6 +5,7 @@
 	<link href="home/css/font-awesome.min.css" rel="stylesheet">
 	<link href="home/css/datepicker3.css" rel="stylesheet">
 	<link href="home/css/styles.css" rel="stylesheet">
+	<script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
 	
 	<!--Custom Font-->
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -25,21 +26,11 @@
 						</div><!-- /.container-fluid -->
 						
 						<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
-		<div class="profile-sidebar">
-			<div class="profile-userpic">
-				<img src="http://placehold.it/50/30a5ff/fff" class="img-responsive" alt="">
-			</div>
-			<div class="profile-usertitle">
-			<div>
-				<div class="profile-usertitle-name">Username</div>
-			</div>
-			</div>
-			<div class="clear"></div>
-		</div>
+					
 		
 		<ul class="nav menu">
-			<li><a href="charts.html"><em class="fa fa-bar-chart">&nbsp;</em> Charts</a></li>
-			<li><a href="login.html"><em class="fa fa-power-off">&nbsp;</em> Logout</a></li>
+			<li><a href="linechart.php"><em class="fa fa-bar-chart">&nbsp;</em> Charts</a></li>
+			<li><a href="index.php"><em class="fa fa-power-off">&nbsp;</em> Logout</a></li>
 		</ul>
 	</div><!--/.sidebar-->
 		
@@ -110,11 +101,11 @@ AmCharts.ready(function() {
   chart = new AmCharts.AmSerialChart();
   chart.pathToImages = "http://www.amcharts.com/lib/images/";
   chart.dataProvider = chartData;
-  chart.categoryField = "date";
-  chart.dataDateFormat = "YYYY-MM-DD";
-
+  chart.categoryField = "waktu";
+  chart.dataDateFormat = "YYY-mm-dd";
+	chart.legend = ""
+  
   // GRAPHS
-
   var graph1 = new AmCharts.AmGraph();
   graph1.valueField = "heartbeat";
   graph1.bullet = "round";
@@ -123,10 +114,10 @@ AmCharts.ready(function() {
   graph1.lineThickness = 2;
   graph1.lineAlpha = 0.5;
   chart.addGraph(graph1);
-
+	
 
   // CATEGORY AXIS
-  chart.categoryAxis.parseDates = true;
+  
 
   // WRITE
   chart.write("chartdiv");

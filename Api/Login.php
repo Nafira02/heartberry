@@ -7,19 +7,24 @@
          $conn = mysqli_connect($dbhost, $dbuser, $dbpass,$db);
 
  
-		$name = $_POST['name'];
-		$born = $_POST['born'];
-		
+		 $name = $_POST['name'];
+		 $born = $_POST['born'];
+
 		 
 		$sql = "select * from elderly where name='$name' and DATE_FORMAT(born,'%d-%m-%Y')='$born'";
  
 		$res = mysqli_query($conn,$sql);
-		 
-		$check = mysqli_fetch_array($res);
+		  		
 		$status=""; 
+		$id_edlery="";
 
-		if(isset($check)){
-		$status=array("status"=>"success");
+		while($check = mysqli_fetch_array($res))
+		{
+			$id_edlery=$check['id_elderly'];
+		}     
+
+		if(isset($id_edlery)){
+		$status=array("status"=>"success","id_elderly"=>$id_edlery);
 			// json echo 'success';
 		}else{
 		$status=array("status"=>"failure");

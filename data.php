@@ -12,10 +12,16 @@ if ( !$db ) {
 }
 
 // Fetch the data
-$query = "
-  SELECT *
-  FROM heartbeat
-  ORDER BY date ASC";
+//$query = "
+//  SELECT *,TIME(date) as waktu
+//  FROM heartbeat
+//  ORDER BY date ASC";
+
+$query="
+SELECT *,TIME(date) as waktu
+  FROM heartbeat where id_elderly=10
+  ORDER BY date ASC 
+  ";
 $result = mysql_query( $query );
 
 // All good?
@@ -31,7 +37,7 @@ $prefix = '';
 echo "[\n";
 while ( $row = mysql_fetch_assoc( $result ) ) {
   echo $prefix . " {\n";
-  echo '  "date": "' . $row['date'] . '",' . "\n";
+  echo '  "waktu": "' . $row['waktu'] . '",' . "\n";
   echo '  "heartbeat": ' . $row['heartbeat'] . ',' . "\n";
   echo " }";
   $prefix = ",\n";
